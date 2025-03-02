@@ -1,4 +1,7 @@
 
+import React from 'react';
+import { Users } from 'lucide-react';
+
 const ExperienceSection = () => {
   const experiences = [
     {
@@ -43,6 +46,7 @@ const ExperienceSection = () => {
     role: "Active Member",
     organization: "NextWork Community",
     link: "https://www.nextwork.org/",
+    profileUrl: "https://community.nextwork.org/u/a52c6d31",
     description: [
       "Member of Cloud & AI Learner community",
       "Actively completed 35 Cloud Projects",
@@ -84,29 +88,40 @@ const ExperienceSection = () => {
         </div>
         
         {/* Volunteer Experience Section */}
-        <h2 className="text-3xl font-bold text-center my-16 animate-fade-in">Volunteer Experience</h2>
+        <h2 className="text-3xl font-bold text-center my-16 animate-fade-in flex items-center justify-center gap-3">
+          <Users className="h-8 w-8 text-primary" />
+          <span className="text-gradient">Volunteer Experience</span>
+        </h2>
         <div className="max-w-3xl mx-auto">
-          <div
-            className="mb-12 relative pl-8 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-primary/20 animate-fade-in"
-          >
-            <div 
-              className="absolute left-0 top-0 w-2 h-2 rounded-full bg-primary transform -translate-x-[3px] animate-scale-in" 
-            />
-            <div 
-              className="glass p-6 rounded-lg hover-lift hover-glow transition-all duration-300 animate-fade-in animate-delayed"
-            >
-              <div className="text-sm text-muted-foreground mb-2">{volunteerExperience.period}</div>
-              <h3 className="text-xl font-semibold mb-2 text-gradient">{volunteerExperience.role}</h3>
-              <div className="text-primary mb-4">
-                <a 
-                  href={volunteerExperience.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  {volunteerExperience.organization}
-                </a>
+          <div className="cinematic-card p-8 rounded-xl border border-primary/20 shadow-lg hover-lift hover-glow transition-all duration-300 animate-fade-in">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-semibold mb-3 text-gradient">{volunteerExperience.role}</h3>
+                <div className="mb-2 text-lg text-primary font-medium">
+                  <a 
+                    href={volunteerExperience.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {volunteerExperience.organization}
+                  </a>
+                  {" - "}
+                  <a 
+                    href={volunteerExperience.profileUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:underline text-sm"
+                  >
+                    My Profile
+                  </a>
+                </div>
               </div>
+              <div className="flex items-center justify-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold">
+                {volunteerExperience.period}
+              </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-primary/10">
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 {volunteerExperience.description.map((point, idx) => (
                   <li key={idx} className="pl-2">{point}</li>
