@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 96%;
+    --foreground: 0 0% 13%;
+    --primary: 82 27% 30%;
+    --primary-foreground: 0 0% 96%;
+    --secondary: 43 74% 49%;
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 82 27% 30%;
+    --radius: 0.5rem;
+    --muted: 0 0% 80%;
+  }
+
+  .dark {
+    --background: 300 100% 3%;
+    --foreground: 0 0% 93%;
+    --primary: 69 100% 50%;
+    --primary-foreground: 300 100% 3%;
+    --secondary: 37 97% 49%;
+    --border: 37 97% 49%;
+    --input: 282 15% 35%;
+    --ring: 69 100% 50%;
+    --muted: 282 15% 35%;
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-glass border border-glass-border;
+    background: rgba(204, 255, 0, 0.1);
+    border-color: rgba(94, 74, 102, 0.2);
+    animation: glassShimmer 3s ease-in-out infinite;
+  }
+
+  .cinematic-card {
+    @apply relative overflow-hidden rounded-lg;
+    background: rgba(17, 0, 17, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(249, 166, 2, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(94, 74, 102, 0.2);
+    animation: cardPulse 4s ease-in-out infinite;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #CCFF00, #F9A602);
+    background-size: 200% auto;
+    animation: textGradient 4s ease infinite;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+    box-shadow: 0 0 0 rgba(204, 255, 0, 0);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+  }
+
+  .light {
+    .glass {
+      background: rgba(85, 107, 47, 0.1);
+      border-color: rgba(204, 204, 204, 0.2);
+    }
+
+    .cinematic-card {
+      background: rgba(245, 245, 245, 0.8);
+      border: 1px solid rgba(218, 165, 32, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(34, 34, 34, 0.1);
+    }
+
+    .text-gradient {
+      background-image: linear-gradient(90deg, #556B2F, #DAA520);
+    }
+
+    .hover-glow {
+      box-shadow: 0 0 0 rgba(85, 107, 47, 0);
+    }
+
+    .hover-glow:hover {
+      box-shadow: 0 0 20px rgba(85, 107, 47, 0.2);
+    }
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glassShimmer {
+  0%, 100% {
+    backdrop-filter: blur(10px);
+    border-color: rgba(94, 74, 102, 0.2);
+  }
+  50% {
+    backdrop-filter: blur(15px);
+    border-color: rgba(249, 166, 2, 0.3);
+  }
+}
+
+@keyframes cardPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 32px 0 rgba(94, 74, 102, 0.2);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px 0 rgba(94, 74, 102, 0.3);
+  }
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-delayed {
+  animation-delay: 0.2s;
+}
+
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
